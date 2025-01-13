@@ -8,6 +8,6 @@ echo "$PERSON2:: Hello $PERSON1"
 echo "$PERSON1:: How are you doing?"
 echo "$PERSON2:: I am doing good, How about you?"
 echo "$PERSON1:: What are you doing now?"
-echo "$PERSON2::  I am a DevSecOps Engineer in Accenture $PERSON1"
+echo "$PERSON2:: I am a DevSecOps Engineer in Accenture $PERSON1"
 
 
