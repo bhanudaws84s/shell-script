@@ -15,7 +15,7 @@ TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 USAGE(){
-    echo "$R USAGE :: $N sh 17-backup.sh <SOURCE DIR> <DEST DIR> <DAYS(OPTIONAL)>"
+    echo -e "$R USAGE :: $N sh 17-backup.sh <SOURCE DIR> <DEST DIR> <DAYS(OPTIONAL)>"
     exit 1
 }
 
