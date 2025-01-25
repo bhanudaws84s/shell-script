@@ -26,3 +26,17 @@ then
     USAGE
 fi
 
+if [ ! -d $SOURCE_DIR ]
+then
+    echo -e "$R $SOURCE_DIR Does not exist...Please check $N"
+    exit 1
+fi
+
+if [ ! -d $DEST_DIR ]
+then
+    echo -e "$R $DEST_DIR Does not exist...Please check $N"
+    exit 1
+fi
+
+echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
+
