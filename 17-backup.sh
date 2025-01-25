@@ -21,24 +21,25 @@ USAGE(){
 
 mkdir -p /home/ec2-user/shell-logs/
 
-if [ $# -lt 2 ]
+if [ $# -lt 2 ] # number of arguments not less than 2
 then
     USAGE
 fi
 
-if [ ! -d $SOURCE_DIR ]
+if [ ! -d $SOURCE_DIR ] # directory located or not
 then
     echo -e "$R $SOURCE_DIR Does not exist...Please check $N"
     exit 1
 fi
 
-if [ ! -d $DEST_DIR ]
+if [ ! -d $DEST_DIR ] # directory located or not
 then
     echo -e "$R $DEST_DIR Does not exist...Please check $N"
     exit 1
 fi
 
 echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
+
 FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 
 
@@ -47,9 +48,24 @@ then
     echo "Files are : $FILES"
     ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.zip"
     find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_FILE"
+    if [ -f "$ZIP_FILE"] # file is located or not
+    then
+        echo -e "$G Successfully Created Zip file $N"
+        while read -r filepath
+        do
+            echo "Deleting files : $filepath" &>>$LOG_FILE_NAME
+            rm -rf $filepath
+            echo "deleted the file : filepath"
+        done <<< $FILES
+
+    else
+        echo -e "$R Error :: Zipping fail $N"
+        exit 1
+    fi
 
 
 else
     echo "No files found older than $DAYS"
+    exit 1
 fi
 
